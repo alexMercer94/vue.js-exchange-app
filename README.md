@@ -1,4 +1,4 @@
-# platzi-exchange
+# Exchange app
 
 ## Project setup
 ```
