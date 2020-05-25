@@ -16,13 +16,33 @@
         <tbody>
             <tr
                 class="border-b border-gray-200 hover:bg-gray-100 hover:bg-orange-100"
+                v-for="asset in assets"
+                :key="asset.id"
             >
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>
+                    <img
+                        class="h-8 w-8"
+                        :src="
+                            `https://static.coincap.io/assets/icons/${asset.symbol.toLowerCase()}@2x.png`
+                        "
+                        :alt="asset.name"
+                    />
+                </td>
+                <td>
+                    <b># {{ asset.rank }}</b>
+                </td>
+                <td>{{ asset.name }}</td>
+                <td>{{ asset.priceUsd | dollar }}</td>
+                <td>{{ asset.marketCapUsd | dollar }}</td>
+                <td
+                    :class="
+                        asset.changePercent24Hr.includes('-')
+                            ? 'text-red-600'
+                            : 'text-green-600'
+                    "
+                >
+                    {{ asset.changePercent24Hr | percent }}
+                </td>
                 <td class="hidden sm:block"></td>
             </tr>
         </tbody>
